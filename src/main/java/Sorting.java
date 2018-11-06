@@ -17,13 +17,13 @@ import javax.swing.JFrame;
 public class Sorting {
 
     /** Increment to sweep the sort. */
-    private static final int SORT_INCREMENT = 10000;
+    private static final int SORT_INCREMENT = 100;
 
     /** Total number of values to try. */
     private static final int TOTAL_SORT_VALUES = 100;
 
     /** Total data size. */
-    private static final int TOTAL_INTEGER_VALUES = 1000000;
+    private static final int TOTAL_INTEGER_VALUES = 10000;
 
     /**
      * Bubble sort.
@@ -33,7 +33,21 @@ public class Sorting {
      */
     @SuppressWarnings("unused")
     private static int[] bubbleSort(final int[] array) {
-        return null;
+        if (array == null) {
+            return null;
+        }
+        int n = array.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                        // swap temp and arr[i]
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+        return array;
     }
 
     /**
@@ -44,7 +58,19 @@ public class Sorting {
      */
     @SuppressWarnings("unused")
     private static int[] selectionSort(final int[] array) {
-        return null;
+        for (int i = 0; i < array.length - 1; i++)
+        {
+            int index = i;
+            for (int j = i + 1; j < array.length; j++){
+                if (array[j] < array[index]){
+                    index = j;//searching for lowest index
+                }
+            }
+            int smallerNumber = array[index];
+            array[index] = array[i];
+            array[i] = smallerNumber;
+        }
+        return array;
     }
 
     /**
